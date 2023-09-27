@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- <link rel="stylesheet" href="./css/reset.css" /> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/map.css" />
+
+    <link rel="icon" href="" type="image/svg+xml" />
+    <link rel="icon alternate" href="" type="image/png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="https://example.com/images/ogp.png" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image.width" content="1200" />
+    <meta property="og:image.height" content="630" />
+    <title>よりみちず</title>
+    <!--script src="https://maps.google.com/maps/api/js?key=AIzaSyBKL_sb1YxMUcpZdzr5pTFllKEmRdbYecw"></script-->
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyBKL_sb1YxMUcpZdzr5pTFllKEmRdbYecw&libraries=places&v=weekly"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <header class="paseHeader">
+      <div class="headerContainer">
+        <h1><span>よりみちず</span></h1>
+        <!-- <p>説明文</p> -->
+      </div>
+    </header>
+    <main class="paseMain">
+      <div class="mainContainer">
+        <div class="form-group">
+          <p>出発地入力</p>
+          <input
+            type="text"
+            class="form-control"
+            id="departure"
+            placeholder="出発地を入力"
+          />
+
+          <p>目的地入力</p>
+          <input
+            type="text"
+            class="form-control"
+            id="arrival"
+            placeholder="目的地を入力"
+          />
+          <p>
+            <input
+              type="button"
+              id="re-load"
+              value="ルート再検索"
+              onclick="reRender()"
+            />
+          </p>
+          <p>
+            移動手段
+            <select id="TravelMode" onchange="reRender()">
+              <option value="WALKING" selected>徒歩</option>
+              <option value="DRIVING">車</option>
+            </select>
+          </p>
+          <p>
+            移動距離
+            <input type="text" id="journey" class="value" value="" /> 直線距離
+            <input type="text" id="distance" class="value" value="" />
+          </p>
+        </div>
+        <!--The div element for the map -->
+        <div id="map_canvas"></div>
+      </div>
+    </main>
+  </body>
+</html>

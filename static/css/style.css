@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+body {
+  font-family: "Catamaran", "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #2c2c2c;
+}
+
+h1 {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+h1 span {
+  background-image: linear-gradient(135deg, #e6ba5d 0%, #9ac78a 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (min-width: 768px) {
+  body {
+    margin: 0% 15% 100px 15%;
+  }
+}
