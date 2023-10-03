@@ -18,7 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
+# index.js, L32より呼び出し、関数を実行。結果をレスポンスとして返す
 @app.get("/relaypoint/{a_lat}/{a_lon}/{b_lat}/{b_lon}")
 async def calc_xy(a_lat: float = 0, a_lon: float = 0, b_lat: float = 0, b_lon: float = 0):
 	rel_place=""
@@ -142,7 +142,7 @@ async def calc_xy(a_lat: float = 0, a_lon: float = 0, b_lat: float = 0, b_lon: f
 	sites=[]
 	types=["store","cafe","spa","restaurant","book_store"]
 	for type in types:
-		url = f"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={cen_lat}%2C{cen_lon}&radius={int(dist)}&type={type}&key=AIzaSyBKL_sb1YxMUcpZdzr5pTFllKEmRdbYecw&language=ja"
+		url = f"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={cen_lat}%2C{cen_lon}&radius={int(dist)}&type={type}&key=AIzaSyBABWHWDIR8FwQKbWYcdJyX--DyVFC_6L4&language=ja"
 		payload={}
 		headers = {}
 		response = requests.request("GET", url, headers=headers, data=payload)
