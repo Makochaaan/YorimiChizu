@@ -58,35 +58,6 @@
     <div class="container">
       <header class="dropDown">
         <nav>
-          <!-- <ul>
-          <li><a href="#">Top</a></li>
-          <li><a href="#">About</a></li>
-          <li class="has-child"><a href="#">Service</a>
-            <ul>
-            <li><a href="#">Service Top</a></li>
-            <li><a href="#">Service-1</a></li>
-            <li class="has-child"><a href="#">Service-2</a>
-              <ul>
-              <li><a href="#">Service-2 Top</a></li>
-              <li><a href="#">Service-2-1</a></li>
-              <li><a href="#">Service-2-2</a></li>
-              <li><a href="#">Service-2-3</a></li>
-              <li><a href="#">Service-2-4</a></li>
-              </ul>
-           </li>
-           <li><a href="#">Service-3</a></li>
-          </ul>
-          </li>
-          <li class="has-child"><a href="#">Blog</a>
-            <ul>
-            <li><a href="#">Blog Top</a></li>
-            <li><a href="#">Blog-1</a></li>
-            <li><a href="#">Blog-2</a></li>
-            <li><a href="#">Blog-3</a></li>
-            <li><a href="#">Blog-4</a></li>
-            </ul>
-          </li>
-          </ul> -->
           <div class="mainContainer">
             <div class="form-group">
               <p>出発地入力</p>
@@ -104,6 +75,34 @@
                 id="arrival"
                 placeholder="目的地を入力"
               />
+              <details class="accordion-003">
+                <summary>詳細検索</summary>
+                <form name="details" action="">
+                  <p>
+                    検索ジャンル<br>
+                    <label><input type="checkbox" id="restaurant" value="restaurant,cafe" checked="checked">飲食店</label>
+                    <label><input type="checkbox" id="store" value="store" checked="checked">商店</label>
+                    <label><input type="checkbox" id="spa" value="spa" checked="checked">スパ</label>
+                    <label><input type="checkbox" id="book_store" value="book_store" checked="checked">書店</label>
+                  </p>
+                  <p>
+                    移動手段
+                    <select id="TravelMode" onchange="reRender()">
+                      <option value="WALKING" selected>徒歩</option>
+                      <option value="DRIVING">車</option>
+                    </select>
+                  </p>
+                </form>
+                
+                
+                <!-- <p>
+                  検索ジャンル
+                  <input type="checkbox" name="food" value="1">焼肉
+                  <input type="checkbox" name="food" value="2">ラーメン
+                  <input type="checkbox" name="food" value="3">フレッシュサラダ
+                  <input type="checkbox" name="food" value="4">100%オレンジジュース
+                </p> -->
+              </details>
               <p>
                 <input
                   type="button"
@@ -112,61 +111,17 @@
                   onclick="reRender()"
                 />
               </p>
-              <p>
-                移動手段
-                <select id="TravelMode" onchange="reRender()">
-                  <option value="WALKING" selected>徒歩</option>
-                  <option value="DRIVING">車</option>
-                </select>
-              </p>
+              
               <p>
                 移動距離
-                <input type="text" id="journey" class="value" value="" /> 直線距離
+                <input type="text" id="journey" class="value" value="" /><br>
+                直線距離
                 <input type="text" id="distance" class="value" value="" />
               </p>
             </div>
           </div>
         </nav>
       </header>
-            <!-- <div class="form-group">
-              <p>出発地入力</p>
-              <input
-                type="text"
-                class="form-control"
-                id="departure"
-                placeholder="出発地を入力、選択"
-              />
-  
-              <p>目的地入力</p>
-              <input
-                type="text"
-                class="form-control"
-                id="arrival"
-                placeholder="目的地を入力"
-              />
-              <p>
-                <input
-                  type="button"
-                  id="re-load"
-                  value="ルート検索"
-                  onclick="reRender()"
-                />
-              </p>
-              <p>
-                移動手段
-                <select id="TravelMode" onchange="reRender()">
-                  <option value="WALKING" selected>徒歩</option>
-                  <option value="DRIVING">車</option>
-                </select>
-              </p>
-              <p>
-                移動距離
-                <input type="text" id="journey" class="value" value="" /> 直線距離
-                <input type="text" id="distance" class="value" value="" />
-              </p>
-            </div> -->
-            <!--The div element for the map -->
-            
             
       <div id="map_canvas"></div>
       

@@ -5,6 +5,7 @@ var departure = [];
 var destination = [];
 var relaypoint = [];
 var infowindow = [];
+var types = [];
 var dep_lat;
 var dep_lon;
 var des_lat;
@@ -23,15 +24,27 @@ async function reRender() {
   if (departure.length != 1 || destination.length != 1) {
     return;
   }
+  if (types.length == 0) {
+    types = ["store","cafe","spa","restaurant","book_store"]
+  }
   var pos1 = departure[0].getPosition();
   var pos2 = destination[0].getPosition();
   dep_lat = pos1.lat();
   dep_lon = pos1.lng();
   des_lat = pos2.lat();
   des_lon = pos2.lng();
+
+  var typesURL = "";
+  for (let n = 0; n < types.length; n++) {
+    typesURL += types[n]; 
+    if (n != types.length-1) {typesURL += ","}
+  }
+  sessionStorage.setItem("ids","restaurant,store,spa,book_store");
+  sessionStorage.setItem("types",typesURL);
+
   var res = await fetch(
     new URL(
-      `${SERVER_URL}/relaypoint/${dep_lat}/${dep_lon}/${des_lat}/${des_lon}`
+      `${SERVER_URL}/relaypoint/${dep_lat}/${dep_lon}/${des_lat}/${des_lon}/types=${typesURL}`
     )
   );
   var data = await res.json();
@@ -116,7 +129,7 @@ function desMarker() {
   });
   neoMarker.setMap(myMap);
   google.maps.event.addListener(neoMarker, "dragend", function (mouseEvent) {
-    reRender();
+    // reRender();
   });
   destination.push(neoMarker);
   if (destination.length == 0) {
@@ -124,7 +137,7 @@ function desMarker() {
   } else if (destination.length == 2) {
     destination.shift().setMap(null);
   }
-  reRender();
+  // reRender();
 }
 //出発地点のマーカーをつける
 function depMarker() {
@@ -135,7 +148,7 @@ function depMarker() {
   });
   neoMarker.setMap(myMap);
   google.maps.event.addListener(neoMarker, "dragend", function (mouseEvent) {
-    reRender();
+    // reRender();
   });
   departure.push(neoMarker);
   if (departure.length == 0) {
@@ -143,7 +156,7 @@ function depMarker() {
   } else if (departure.length == 2) {
     departure.shift().setMap(null);
   }
-  reRender();
+  // reRender();
 }
 //出発地点の入力
 function initialize() {
@@ -177,6 +190,22 @@ function initialize2() {
 }
 
 google.maps.event.addDomListener(window, "load", initialize2);
+
+window.addEventListener('load', function () {
+  if (this.sessionStorage.getItem("types")!=null) {
+    if (sessionStorage.getItem("types").length ==0) {}
+    else {
+      ids = sessionStorage.getItem("ids").split(",");
+      temp = sessionStorage.getItem("types").split(",");
+      nonChecked = ids.filter(i => temp.indexOf(i) == -1)
+      console.log(nonChecked);
+      for (let n; n<nonChecked.length; n++) {
+        document.getElementById(`${nonChecked[n]}`).checked = "";
+      }
+    }
+  }
+});
+
 
 //ページ表示後に行なわれるやつ
 $(document).ready(function () {
@@ -249,7 +278,60 @@ $(document).ready(function () {
   });
   document.getElementById("journey").disabled = true;
   document.getElementById("distance").disabled = true;
+
 });
+
+// 詳細設定の取得
+window.onload = function() {
+
+  document.getElementById("restaurant").addEventListener('change', function () {
+    if (document.getElementById("restaurant").checked) {
+      types.push(document.getElementById("restaurant").value);
+      alert(types);
+    } else {
+      if (types.includes(document.getElementById("restaurant").value)) {
+        types.splice(types.indexOf(document.getElementById("restaurant")),1);
+        alert(types);
+      }
+    }
+  }); 
+  document.getElementById("store").addEventListener('change', function () {
+    if (document.getElementById("store").checked) {
+      types.push(document.getElementById("store").value);
+      alert(types);
+    } else {
+      if (types.includes(document.getElementById("store").value)) {
+        types.splice(types.indexOf(document.getElementById("store")),1);
+        alert(types);
+      }
+    }
+  });
+  document.getElementById("spa").addEventListener('change', function () {
+    if (document.getElementById("spa").checked) {
+      types.push(document.getElementById("spa").value);
+      alert(types);
+    } else {
+      if (types.includes(document.getElementById("spa").value)) {
+        types.splice(types.indexOf(document.getElementById("spa")),1);
+        alert(types);
+      }
+    }
+  });
+  document.getElementById("book_store").addEventListener('change', function () {
+    if (document.getElementById("book_store").checked) {
+      types.push(document.getElementById("book_store").value);
+      alert(types);
+    } else {
+      if (types.includes(document.getElementById("book_store").value)) {
+        types.splice(types.indexOf(document.getElementById("book_store")),1);
+        alert(types);
+      }
+    }
+  });
+}  
+
+
+
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(
