@@ -175,6 +175,28 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, "load", initialize);
 
+// 出発地の入力(現在地)
+function initialize1_1() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        document.getElementById("departure").value = "現在地"
+        depMarker(pos);
+      },
+      () => {
+        handleLocationError(true, infoWindow, myMap.getCenter());
+      }
+    );
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, myMap.getCenter());
+  }
+}
+
 //目的地の入力
 function initialize2() {
   var inputArrival = document.getElementById("arrival");
@@ -191,8 +213,9 @@ function initialize2() {
 
 google.maps.event.addDomListener(window, "load", initialize2);
 
+// チェックボックス入力情報の保持
 window.addEventListener('load', function () {
-  if (this.sessionStorage.getItem("types")!=null) {
+  if (sessionStorage.getItem("types")!=null) {
     if (sessionStorage.getItem("types").length ==0) {}
     else {
       ids = sessionStorage.getItem("ids").split(",");
