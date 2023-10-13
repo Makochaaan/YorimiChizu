@@ -90,6 +90,7 @@ async function reRender() {
           draggable: false,
         });
         neoMarker.setMap(myMap);
+        myMap.setCenter(new google.maps.LatLng(rel_lat, rel_lon));
         relaypoint.push(neoMarker);
         if (rel_place != "") {
           var url = `https://www.google.co.jp/maps/place?ll=${rel_lat},${rel_lon}&q=${encodeURI(
@@ -127,6 +128,7 @@ async function reRender() {
             draggable: false,
           });
           neoMarker.setMap(myMap);
+          myMap.setCenter(new google.maps.LatLng(rel_lat, rel_lon));
           relaypoint.push(neoMarker);
           if (rel_place != "") {
             var url = `https://www.google.co.jp/maps/place?ll=${rel_lat},${rel_lon}&q=${encodeURI(
@@ -201,6 +203,7 @@ function depMarker() {
   if (departure.length == 0) {
     return;
   } else if (departure.length == 2) {
+    myMap.setCenter(new google.maps.LatLng(arguments[0]));
     departure.shift().setMap(null);
   }
   // reRender();
