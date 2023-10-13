@@ -153,6 +153,7 @@ async def calc_xy(a_lat: float = 0, a_lon: float = 0, b_lat: float = 0, b_lon: f
 	if len(sites)!=0:
 		place= random.choice(sites)
 		rel_place=place["name"]
+		print("test1")
 		print(place)
 		rel_lat=place["geometry"]["location"]["lat"]
 		rel_lon=place["geometry"]["location"]["lng"]

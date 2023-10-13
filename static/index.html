@@ -63,11 +63,11 @@
               <p>出発地入力</p>
               <input
                 type="text"
-                class="form-control"
+                class="form-control departure"
                 id="departure"
                 placeholder="出発地を入力、選択"
               />
-              <input type="button" id="current" onclick="initialize1_1()">
+              <input type="image" src="./img/compus.png" class="departure" onclick="initialize1_1()">
   
               <p>目的地入力</p>
               <input
@@ -79,30 +79,35 @@
               <details class="accordion-003">
                 <summary>詳細検索</summary>
                 <form name="details" action="">
-                  <p>
-                    検索ジャンル<br>
-                    <label><input type="checkbox" id="restaurant" value="restaurant,cafe" checked="checked">飲食店</label>
-                    <label><input type="checkbox" id="store" value="store" checked="checked">商店</label>
-                    <label><input type="checkbox" id="spa" value="spa" checked="checked">スパ</label>
-                    <label><input type="checkbox" id="book_store" value="book_store" checked="checked">書店</label>
+                  検索ジャンル<br>
+                  <p class="genre">
+                    
+                    <label><input type="checkbox" class="genres" id="restaurant" value="restaurant,cafe" checked="checked">飲食店</label>
+                    <label><input type="checkbox" class="genres" id="store" value="store" checked="checked">商店</label>
+                    <label><input type="checkbox" class="genres"id="spa" value="spa" checked="checked">スパ</label>
+                    <label><input type="checkbox" class="genres" id="book_store" value="book_store" checked="checked">書店</label>
+                    <label><input type="checkbox" class="genres" id="museum" value="art_gallery,museum" checked="checked">美術館</label>
+                    <label><input type="checkbox" class="genres" id="bar" value="bar" checked="checked">バー</label>
+                    <label><input type="checkbox" class="genres" id="clothing_store" value="clothing_store" checked="checked">洋服屋</label>
+                    <label><input type="checkbox" class="genres" id="convenience_store" value="convenience_store" checked="checked">コンビニ</label>
+                    <label><input type="checkbox" class="genres" id="pharmacy" value="drugstore,pharmacy" checked="checked">薬局</label>
+                    <label><input type="checkbox" class="genres" id="gym" value="gym" checked="checked">ジム</label>
+                    <label><input type="checkbox" class="genres" id="home_goods_store" value="home_goods_store" checked="checked">雑貨屋</label>
+                    <label><input type="checkbox" class="genres" id="movie_theater" value="movie_theater" checked="checked">映画館</label>
+                    <label><input type="checkbox" class="genres" id="post_office" value="post_office" checked="checked">郵便局</label>
+                    <label><input type="checkbox" class="genres" id="zoo" value="zoo" checked="checked">動物園</label>
+                    
                   </p>
                   <p>
                     移動手段
-                    <select id="TravelMode" onchange="reRender()">
+                    <select id="TravelMode">
                       <option value="WALKING" selected>徒歩</option>
                       <option value="DRIVING">車</option>
+                      <option value="TRANSIT">公共交通</option>
+                      <option value="BICYCLING">自転車</option>
                     </select>
                   </p>
                 </form>
-                
-                
-                <!-- <p>
-                  検索ジャンル
-                  <input type="checkbox" name="food" value="1">焼肉
-                  <input type="checkbox" name="food" value="2">ラーメン
-                  <input type="checkbox" name="food" value="3">フレッシュサラダ
-                  <input type="checkbox" name="food" value="4">100%オレンジジュース
-                </p> -->
               </details>
               <p>
                 <input

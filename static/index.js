@@ -6,6 +6,7 @@ var destination = [];
 var relaypoint = [];
 var infowindow = [];
 var types = [];
+var genres;
 var dep_lat;
 var dep_lon;
 var des_lat;
@@ -22,10 +23,8 @@ async function reRender() {
     infowindow.shift().close();
   }
   if (departure.length != 1 || destination.length != 1) {
-    return;
-  }
-  if (types.length == 0) {
-    types = ["store","cafe","spa","restaurant","book_store"]
+      alert("出発地・目的地を適切に入力してください");
+      return;
   }
   var pos1 = departure[0].getPosition();
   var pos2 = destination[0].getPosition();
@@ -39,7 +38,7 @@ async function reRender() {
     typesURL += types[n]; 
     if (n != types.length-1) {typesURL += ","}
   }
-  sessionStorage.setItem("ids","restaurant,store,spa,book_store");
+  sessionStorage.setItem("ids","restaurant,cafe,store,spa,book_store,art_gallery,museum,bar,clothing_store,convenience_store,drugstore,pharmacy,gym,home_goods_store,movie_theater,post_office,zoo");
   sessionStorage.setItem("types",typesURL);
 
   var res = await fetch(
@@ -51,10 +50,17 @@ async function reRender() {
   var rel_lat = data.rel_lat;
   var rel_lon = data.rel_lon;
   var rel_place = data.rel_place;
-  var myTravelMode =
-    document.getElementById("TravelMode").value == "DRIVING"
-      ? google.maps.DirectionsTravelMode.DRIVING
-      : google.maps.DirectionsTravelMode.WALKING;
+  var myTravelMode;
+  switch (document.getElementById("TravelMode").value){
+    case "DRIVING":
+      myTravelMode = google.maps.DirectionsTravelMode.DRIVING;
+    case "WALKING":
+      myTravelMode = google.maps.DirectionsTravelMode.WALKING;
+    case "TRANSIT":
+      myTravelMode = google.maps.DirectionsTravelMode.TRANSIT;
+    case "BICYCLING":
+      myTravelMode = google.maps.DirectionsTravelMode.BICYCLING;
+  }
   directionsService.route(
     {
       origin: departure[0].getPosition(),
@@ -103,7 +109,48 @@ async function reRender() {
         }
       } else if (search_count < search_limit) {
         reRender();
-      } else {
+      }
+      // 結果は返ってくるがルートの検索ができない場合 
+      else if (status == google.maps.DirectionsStatus.ZERO_RESULTS) {
+        try{
+          search_count = 0;
+          // document.getElementById("journey").value =
+          //   result.routes[0].legs[0].distance.value >= 1000
+          //     ? result.routes[0].legs[0].distance.value / 1000 + "km"
+          //     : result.routes[0].legs[0].distance.value + "m";
+          if (relaypoint.length == 1) {
+            relaypoint.shift().setMap(null);
+          }
+          var neoMarker = new google.maps.Marker({
+            position: new google.maps.LatLng(rel_lat, rel_lon),
+            map: myMap,
+            draggable: false,
+          });
+          neoMarker.setMap(myMap);
+          relaypoint.push(neoMarker);
+          if (rel_place != "") {
+            var url = `https://www.google.co.jp/maps/place?ll=${rel_lat},${rel_lon}&q=${encodeURI(
+              rel_place
+            )}&z=15`;
+            var contentStr =
+              `${rel_place}` +
+              "<p>" +
+              `<a href=${url} target="_blank" rel="noopener noreferrer">Googleマップで見る</a>` +
+              "</p>";
+            var info = new google.maps.InfoWindow({
+              content: contentStr,
+              position: new google.maps.LatLng(rel_lat, rel_lon),
+            });
+            infowindow.push(info);
+            info.open({ anchor: relaypoint[0], myMap, shouldFocus: false });
+          }
+        } catch {
+          search_count = 0;
+          alert("ルート検索できませんでした");
+        }
+      } 
+      // 結果も返ってこない場合
+      else {
         search_count = 0;
         alert("ルート検索できませんでした");
       }
@@ -232,6 +279,13 @@ window.addEventListener('load', function () {
 
 //ページ表示後に行なわれるやつ
 $(document).ready(function () {
+
+  // Typesの初期化
+  genres = document.getElementsByClassName('genres');
+  for (i=0; i<genres.length; i++) {
+    types.push(genres[i].value);
+  }
+
   var param = new Array();
   var a = window.location.search.substring(1);
   var b = a.split("&");
@@ -307,49 +361,22 @@ $(document).ready(function () {
 // 詳細設定の取得
 window.onload = function() {
 
-  document.getElementById("restaurant").addEventListener('change', function () {
-    if (document.getElementById("restaurant").checked) {
-      types.push(document.getElementById("restaurant").value);
-      alert(types);
-    } else {
-      if (types.includes(document.getElementById("restaurant").value)) {
-        types.splice(types.indexOf(document.getElementById("restaurant")),1);
-        alert(types);
+  var id = [];
+  for (i=0; i<genres.length; i++){
+    id.push(genres[i].id);
+  }
+  id.forEach(function(id) {
+    document.getElementById(id).addEventListener("change", function() {
+      
+      if (document.getElementById(id).checked) {
+        types.push(document.getElementById(id).value);
+        
+      } else {
+        if (types.includes(document.getElementById(id).value)) {
+          types.splice(types.indexOf(document.getElementById(id).value),1);
+        }
       }
-    }
-  }); 
-  document.getElementById("store").addEventListener('change', function () {
-    if (document.getElementById("store").checked) {
-      types.push(document.getElementById("store").value);
-      alert(types);
-    } else {
-      if (types.includes(document.getElementById("store").value)) {
-        types.splice(types.indexOf(document.getElementById("store")),1);
-        alert(types);
-      }
-    }
-  });
-  document.getElementById("spa").addEventListener('change', function () {
-    if (document.getElementById("spa").checked) {
-      types.push(document.getElementById("spa").value);
-      alert(types);
-    } else {
-      if (types.includes(document.getElementById("spa").value)) {
-        types.splice(types.indexOf(document.getElementById("spa")),1);
-        alert(types);
-      }
-    }
-  });
-  document.getElementById("book_store").addEventListener('change', function () {
-    if (document.getElementById("book_store").checked) {
-      types.push(document.getElementById("book_store").value);
-      alert(types);
-    } else {
-      if (types.includes(document.getElementById("book_store").value)) {
-        types.splice(types.indexOf(document.getElementById("book_store")),1);
-        alert(types);
-      }
-    }
+    });
   });
 }  
 

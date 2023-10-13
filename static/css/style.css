@@ -1,5 +1,41 @@
 @charset "utf-8";
 
+body {
+  font-family: "Catamaran", "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #2c2c2c;
+}
+
+h1 {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+h1 span {
+  background-image: linear-gradient(135deg, #e6ba5d 0%, #9ac78a 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.paseHeader {
+  /* border: solid;
+  border-bottom: black 1px; */
+  border-bottom: 1px solid; /* 線の太さと可視化 */
+  /* border-top: transparent; 
+  border-bottom-left-radius: 8px; 
+  border-bottom-right-radius: 8px;  */
+}
+
+.paseHeader h1 {
+  margin-left: 20px;
+}
+
 /*全て共通：hideエリアをはじめは非表示*/
 .hide-area{
 	display: none;
@@ -94,41 +130,33 @@
   opacity: 1;
 }
 
+.departure {
+  /* display: flex; */
+  vertical-align : top;
+}
 
+.genre {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
 
-@media (min-width: 900px) {
-  body {
-    font-family: "Catamaran", "Noto Sans JP", sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #2c2c2c;
-  }
-  
-  h1 {
-    text-align: center;
-    font-size: 42px;
-    font-weight: 700;
-    letter-spacing: 0.17em;
-    text-transform: uppercase;
-  }
-  
-  h1 span {
-    background-image: linear-gradient(135deg, #e6ba5d 0%, #9ac78a 100%);
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
+.genre label {
+  margin: 2px 4px 2px 0px;
+}
+
+@media (min-width: 768px) {
   
   div.container{
     display:flex;
     height: 800px;
   }
+  
   /*========= ナビゲーションドロップダウンのためのCSS ===============*/
 
   /*==ナビゲーション全体の設定*/
   nav{
-    width:60%;/*navの外側のheaderなどに横幅を指定する場合は削除してください*/
+    width:70%;/*navの外側のheaderなどに横幅を指定する場合は削除してください*/
     }
     
     
