@@ -26,6 +26,8 @@ async function reRender() {
       alert("出発地・目的地を適切に入力してください");
       return;
   }
+  document.getElementById("load_scene").style.display = "block";
+  
   var pos1 = departure[0].getPosition();
   var pos2 = destination[0].getPosition();
   dep_lat = pos1.lat();
@@ -156,6 +158,8 @@ async function reRender() {
         search_count = 0;
         alert("ルート検索できませんでした");
       }
+      document.getElementById("load_scene").style.display = "none";
+      
     }
   );
   var d = Math.round(
@@ -219,7 +223,9 @@ function initialize() {
     "place_changed",
     function () {
       var placeDeparture = autocompleteDeparture.getPlace();
+      document.getElementById("departure").value = placeDeparture.name;
       depMarker(placeDeparture.geometry.location);
+      
     }
   );
 }
@@ -234,7 +240,7 @@ function initialize1_1() {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
-        document.getElementById("departure").value = "現在地"
+        document.getElementById("departure").value = "現在地";
         depMarker(pos);
       },
       () => {
@@ -257,6 +263,7 @@ function initialize2() {
     function () {
       var placeArrival = autocompleteArrival.getPlace();
       desMarker(placeArrival.geometry.location);
+      document.getElementById("arrival").value = placeArrival.name;
     }
   );
 }

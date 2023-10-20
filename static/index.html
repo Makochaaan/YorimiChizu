@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- <link rel="stylesheet" href="./css/reset.css" /> -->
+    <link rel="stylesheet" href="./css/reset.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       rel="stylesheet"
@@ -60,78 +60,94 @@
         <nav>
           <div class="mainContainer">
             <div class="form-group">
-              <p>出発地入力</p>
-              <input
-                type="text"
-                class="form-control departure"
-                id="departure"
-                placeholder="出発地を入力、選択"
-              />
-              <input type="image" src="./img/compus.png" class="departure" onclick="initialize1_1()">
-  
-              <p>目的地入力</p>
-              <input
-                type="text"
-                class="form-control"
-                id="arrival"
-                placeholder="目的地を入力"
-              />
-              <details class="accordion-003">
-                <summary>詳細検索</summary>
-                <form name="details" action="">
-                  検索ジャンル<br>
-                  <p class="genre">
-                    
-                    <label><input type="checkbox" class="genres" id="restaurant" value="restaurant,cafe" checked="checked">飲食店</label>
-                    <label><input type="checkbox" class="genres" id="store" value="store" checked="checked">商店</label>
-                    <label><input type="checkbox" class="genres"id="spa" value="spa" checked="checked">スパ</label>
-                    <label><input type="checkbox" class="genres" id="book_store" value="book_store" checked="checked">書店</label>
-                    <label><input type="checkbox" class="genres" id="museum" value="art_gallery,museum" checked="checked">美術館</label>
-                    <label><input type="checkbox" class="genres" id="bar" value="bar" checked="checked">バー</label>
-                    <label><input type="checkbox" class="genres" id="clothing_store" value="clothing_store" checked="checked">洋服屋</label>
-                    <label><input type="checkbox" class="genres" id="convenience_store" value="convenience_store" checked="checked">コンビニ</label>
-                    <label><input type="checkbox" class="genres" id="pharmacy" value="drugstore,pharmacy" checked="checked">薬局</label>
-                    <label><input type="checkbox" class="genres" id="gym" value="gym" checked="checked">ジム</label>
-                    <label><input type="checkbox" class="genres" id="home_goods_store" value="home_goods_store" checked="checked">雑貨屋</label>
-                    <label><input type="checkbox" class="genres" id="movie_theater" value="movie_theater" checked="checked">映画館</label>
-                    <label><input type="checkbox" class="genres" id="post_office" value="post_office" checked="checked">郵便局</label>
-                    <label><input type="checkbox" class="genres" id="zoo" value="zoo" checked="checked">動物園</label>
-                    
-                  </p>
-                  <p>
-                    移動手段
-                    <select id="TravelMode">
-                      <option value="WALKING" selected>徒歩</option>
-                      <option value="DRIVING">車</option>
-                      <option value="TRANSIT">公共交通</option>
-                      <option value="BICYCLING">自転車</option>
-                    </select>
-                  </p>
-                </form>
-              </details>
-              <p>
+              <div class="form-block">
+                <p>出発地入力</p>
                 <input
-                  type="button"
-                  id="re-load"
-                  value="ルート検索"
-                  onclick="reRender()"
+                  type="text"
+                  class="form-control departure"
+                  id="departure"
+                  placeholder="出発地を入力、選択"
                 />
-              </p>
+                <input type="image" src="./img/compus.png" class="departure" onclick="initialize1_1()" style="border-radius: 100px;">
+              </div>
               
-              <p>
-                移動距離
-                <input type="text" id="journey" class="value" value="" /><br>
-                直線距離
-                <input type="text" id="distance" class="value" value="" />
-              </p>
+              <div class="form-block">
+                <p>目的地入力</p>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="arrival"
+                  placeholder="目的地を入力"
+                />
+              </div>
+              
+              <div class="form-block" style="padding-bottom: 0px;">
+                <details class="accordion-003">
+                  <summary>詳細検索</summary>
+                  <form name="details" action="">
+                    検索ジャンル<br>
+                    <p class="genre" style="font-size: medium; font-weight:100;">
+                      
+                      <label><input type="checkbox" class="genres" id="restaurant" value="restaurant,cafe" checked="checked">飲食店</label>
+                      <label><input type="checkbox" class="genres" id="store" value="store" checked="checked">商店</label>
+                      <label><input type="checkbox" class="genres"id="spa" value="spa" checked="checked">スパ</label>
+                      <label><input type="checkbox" class="genres" id="book_store" value="book_store" checked="checked">書店</label>
+                      <label><input type="checkbox" class="genres" id="museum" value="art_gallery,museum" checked="checked">美術館</label>
+                      <label><input type="checkbox" class="genres" id="bar" value="bar" checked="checked">バー</label>
+                      <label><input type="checkbox" class="genres" id="clothing_store" value="clothing_store" checked="checked">洋服屋</label>
+                      <label><input type="checkbox" class="genres" id="convenience_store" value="convenience_store" checked="checked">コンビニ</label>
+                      <label><input type="checkbox" class="genres" id="pharmacy" value="drugstore,pharmacy" checked="checked">薬局</label>
+                      <label><input type="checkbox" class="genres" id="gym" value="gym" checked="checked">ジム</label>
+                      <label><input type="checkbox" class="genres" id="home_goods_store" value="home_goods_store" checked="checked">雑貨屋</label>
+                      <label><input type="checkbox" class="genres" id="movie_theater" value="movie_theater" checked="checked">映画館</label>
+                      <label><input type="checkbox" class="genres" id="post_office" value="post_office" checked="checked">郵便局</label>
+                      <label><input type="checkbox" class="genres" id="zoo" value="zoo" checked="checked">動物園</label>
+                      
+                    </p>
+                    <p>
+                      移動手段<br>
+                      <select id="TravelMode" style="border-radius: 5px;">
+                        <option value="WALKING" selected>徒歩</option>
+                        <option value="DRIVING">車</option>
+                        <option value="TRANSIT">公共交通</option>
+                        <option value="BICYCLING">自転車</option>
+                      </select>
+                    </p>
+                  </form>
+                </details>
+              </div>
+              <!-- <div class="form-block"> -->
+                <p>
+                  <input
+                    class="search"
+                    type="button"
+                    id="re-load"
+                    value="ルート検索"
+                    onclick="reRender()"
+                    style="border-width:1px;"
+                  />
+                </p>
+              <!-- </div> -->
+              <div class="form-block">
+                <p>
+                  移動距離
+                  <input type="text" id="journey" class="value" value="" /><br>
+                  直線距離
+                  <input type="text" id="distance" class="value" value="" />
+                </p>
+              </div>
             </div>
           </div>
         </nav>
       </header>
             
-      <div id="map_canvas"></div>
-      
+      <div id="map_canvas"></div>   
+
     </div>
+    <div class="load_scene" id="load_scene" style="display: none;">
+      <div class="loader">Loading...</div>
+    </div>
+    
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>

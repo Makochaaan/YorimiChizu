@@ -1,7 +1,12 @@
 /* Set the size of the div element that contains the map */
 #map_canvas {
-  height: 800px;
+  height: 80%;
   /* The height is 400 pixels */
-  width: 100%;
+  width: 80%;
   /* The width is the width of the web page */
+  border-radius: 15px;
+  /* border-bottom-left-radius: 40px; */
+  margin-right: 75px;
+  margin-left: 75px;
+  margin-top: 80px; 
 }

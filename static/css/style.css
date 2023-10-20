@@ -1,10 +1,11 @@
 @charset "utf-8";
 
 body {
-  font-family: "Catamaran", "Noto Sans JP", sans-serif;
+  font-family: "メイリオ","ヒラギノ角ゴシック","Catamaran", "Noto Sans JP", sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #2c2c2c;
+  background-color: #FFBC52;
 }
 
 h1 {
@@ -30,6 +31,35 @@ h1 span {
   /* border-top: transparent; 
   border-bottom-left-radius: 8px; 
   border-bottom-right-radius: 8px;  */
+  background-color: white;
+  height: 12vh;
+}
+
+.form-block {
+  background-color: #FD9B00;
+  border-radius: 20px;
+  padding:0px 10px 5px 10px;
+  margin: auto auto 30px auto;
+  text-align: center;
+}
+
+.form-block p{
+  font-weight:bold;
+  font-size: larger;
+  text-decoration:dashed;
+  margin-bottom: 3px;
+  padding: 10px 0px 10px 0px;
+}
+
+.form-block input {
+  margin: 0px 0px 10px 0px;
+  padding: 5px 0px 5px 0px;
+}
+
+.form-control {
+  border:solid;
+  border-radius:5px;
+  border-color:#ccc;
 }
 
 .paseHeader h1 {
@@ -133,9 +163,31 @@ h1 span {
 .departure {
   /* display: flex; */
   vertical-align : top;
+  
+}
+
+.search {
+  margin-left: 27%;
+  height:50px;
+  width: 150px;
+  color: #fff;
+  background-color: #eb6100;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.search:hover {
+  margin-left: 27%;
+  height:50px;
+  width: 150px;
+  color: #fff;
+  background-color:#f56500;
+  border-radius: 10px;
+  font-weight: bold;
 }
 
 .genre {
+  font-size: medium;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -144,6 +196,95 @@ h1 span {
 .genre label {
   margin: 2px 4px 2px 0px;
 }
+
+.load_scene {
+  
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  transition: all 1s;
+  background-color: #0dc5c1;
+  opacity: 30%;
+ 
+/* 以下のコードを追加 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+}
+.loader {
+  color: #ffffff;
+  font-size: 11px;
+  text-indent: -99999em;
+  margin: 30% auto;
+  position: relative;
+  width: 10em;
+  height: 10em;
+  box-shadow: inset 0 0 0 1em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  content: '';
+}
+.loader:before {
+  width: 5.2em;
+  height: 10.2em;
+  background: #0dc5c1;
+  border-radius: 10.2em 0 0 10.2em;
+  top: -0.1em;
+  left: -0.1em;
+  -webkit-transform-origin: 5.1em 5.1em;
+  transform-origin: 5.1em 5.1em;
+  -webkit-animation: load2 2s infinite ease 1.5s;
+  animation: load2 2s infinite ease 1.5s;
+}
+.loader:after {
+  width: 5.2em;
+  height: 10.2em;
+  background: #0dc5c1;
+  border-radius: 0 10.2em 10.2em 0;
+  top: -0.1em;
+  left: 4.9em;
+  -webkit-transform-origin: 0.1em 5.1em;
+  transform-origin: 0.1em 5.1em;
+  -webkit-animation: load2 2s infinite ease;
+  animation: load2 2s infinite ease;
+}
+@-webkit-keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
 
 @media (min-width: 768px) {
   
@@ -156,7 +297,7 @@ h1 span {
 
   /*==ナビゲーション全体の設定*/
   nav{
-    width:70%;/*navの外側のheaderなどに横幅を指定する場合は削除してください*/
+    width:100%;/*navの外側のheaderなどに横幅を指定する場合は削除してください*/
     }
     
     
@@ -166,8 +307,9 @@ h1 span {
   }
 
   header.dropDown{
-    width:45%;
-    background-color: gainsboro;
+    width:40%;
+    height: 88vh;
+    background-color: #FFB033;
   }
 
     
@@ -274,6 +416,7 @@ h1 span {
   nav li.has-child ul ul li a:active{
       background:#448ED3;
   }
+
 
 }
 
