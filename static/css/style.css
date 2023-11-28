@@ -320,7 +320,7 @@ h1 span {
 
   header.dropDown{
     width:40%;
-    height: 88vh;
+    height: 86.5vh;
     background-color: #FFB033;
   }
 
@@ -436,6 +436,9 @@ h1 span {
 @media (min-width: 1200px) {
   .mainContainer {
     margin: 0% 15% 100px 15%;
+  }
+  body{
+    overflow:hidden;
   }
 }
 
