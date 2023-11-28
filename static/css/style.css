@@ -6,6 +6,7 @@ body {
   line-height: 1.5;
   color: #2c2c2c;
   background-color: #FFBC52;
+  width: 100%;
 }
 
 h1 {
@@ -23,6 +24,10 @@ h1 span {
   background-clip: text;
   color: transparent;
 }
+.info img{
+  margin-right: 50px;
+  margin-top: 25px;
+} 
 
 .paseHeader {
   /* border: solid;
@@ -32,7 +37,8 @@ h1 span {
   border-bottom-left-radius: 8px; 
   border-bottom-right-radius: 8px;  */
   background-color: white;
-  height: 12vh;
+  /* height: 12vh; */
+  /* width:100%; */
 }
 
 .form-block {
@@ -167,7 +173,6 @@ h1 span {
 }
 
 .search {
-  margin-left: 27%;
   height:50px;
   width: 150px;
   color: #fff;
@@ -177,7 +182,14 @@ h1 span {
 }
 
 .search:hover {
-  margin-left: 27%;
+  height:50px;
+  width: 150px;
+  color: #fff;
+  background-color:#f56500;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.search:active {
   height:50px;
   width: 150px;
   color: #fff;
@@ -286,7 +298,7 @@ h1 span {
 
 
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   
   div.container{
     display:flex;
@@ -421,7 +433,7 @@ h1 span {
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .mainContainer {
     margin: 0% 15% 100px 15%;
   }
@@ -429,11 +441,10 @@ h1 span {
 
 
   
-  /*==900px以下の形状*/
+  /*==1200px以下の形状*/
   
-@media screen and (max-width:768px){
+@media screen and (max-width: 1200px){
   nav{
-    background:#333;
     color: #fff;
   }
     
@@ -464,5 +475,42 @@ h1 span {
   nav ul li.has-child.active::before{
       transform: rotate(-45deg);
   }
-    
+
+  .accordion-003{
+    margin:0 auto;
+  }
+
+  .search{
+    margin:0 auto;
+  }
+
+  .search:active{
+    margin: 0 auto 10px auto;
+  }
+
+  .form-block{
+    margin: auto auto 10px auto;
+  }
+
+  .headerContainer{
+    height:90%;
+  }
+  .headerContainer .info-list{
+    margin:0;
+    height:80%;
+    width:20%;
+  }
+  .headerContainer h1{
+    margin:0;
+    height:80%;
+    width:100%;
+  }
+ .info-list a span{
+  visibility: hidden;
+ }
+ .info img{
+  margin-right: 0px;
+  width: 1rem;
+ }
+ 
 }

@@ -52,6 +52,7 @@ async function reRender() {
   var rel_lat = data.rel_lat;
   var rel_lon = data.rel_lon;
   var rel_place = data.rel_place;
+  var rel_type = data.rel_type;
   var myTravelMode;
   switch (document.getElementById("TravelMode").value){
     case "DRIVING":
@@ -98,11 +99,25 @@ async function reRender() {
           var url = `https://www.google.co.jp/maps/place?ll=${rel_lat},${rel_lon}&q=${encodeURI(
             rel_place
           )}&z=15`;
-          var contentStr =
-            `${rel_place}` +
-            "<p>" +
-            `<a href=${url} target="_blank" rel="noopener noreferrer">Googleマップで見る</a>` +
-            "</p>";
+          // var contentStr =
+          //   `<h2> ${rel_place} </h2>` + "<br>" +
+          //   "<p>" +
+          //   `<a href=${url} target="_blank" rel="noopener noreferrer">Googleマップで詳細を見る</a>` +
+          //   "</p>";
+
+          var contentStr = '<div id="content">' +
+          '<div id="siteNotice">' +
+          "</div>" +
+          `<h3 id="firstHeading" class="firstHeading">${rel_place}</h3>` +
+          '<div id="bodyContent">' +
+          `<p><b>ジャンル: ${rel_type}</b></p>` +
+          `<p><b><a href=${url} target="_blank" rel="noopener noreferrer">Googleマップで詳細を見る</a></b>`
+          "Heritage Site.</p>" +
+          '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
+          "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
+          "(last visited June 22, 2009).</p>" +
+          "</div>" +
+          "</div>";
           var info = new google.maps.InfoWindow({
             content: contentStr,
             position: new google.maps.LatLng(rel_lat, rel_lon),

@@ -43,8 +43,8 @@
         <!--1. テキストを含む一般的なモーダル-->
         <p class="info-list">
           <a href="#info-1" class="info"><!--リンク先は表示させたいエリアのid名を指定-->
-            <img src="./img/help.png" style="margin-right: 50px;">
-            <br>使い方
+            <img src="./img/help.png">
+            <br><span>使い方</span>
           </a>
           
         </p>
@@ -52,7 +52,22 @@
       </div>
       <section id="info-1" class="hide-area"><!--表示エリアのHTML。id名にリンク先と同じ名前を指定。非表示にするためhide-areaというクラス名も指定。-->
         <h2>「よりみちず」の使い方</h2>
-        <p> おしらせの内容が入ります。</p>
+        <h3>Step1. 出発地と目的地を入力</h3>
+        <p>調べたい経路の出発地と目的地を入力欄に書き込みます。
+          <img src="./img/exp1.png" style="width:100%">
+          入力をすると、写真のように自動で場所の提案が出てきますので、入力したい地点を選択してください(選択しないと上手く動作しません)<br>
+          ※出発地については入力欄横のコンパスマークを押すことで現在地を入力することが可能です</p>
+        <br>
+        <h3>Step2. 検索オプションを選択</h3>
+        <p>入力欄下の「詳細検索」を押すことで、検索するジャンルと移動手段が選べます
+           <img src="./img/exp2.png" style="width:100%">
+           検索ジャンル: チェックを入れたジャンルの場所のみを検索結果として表示します<br>
+           移動手段: 徒歩、車、公共交通、自転車が選択できます。公共交通であれば駅周辺、車であれば大きな道沿いの場所を表示します</p>
+        <p>※詳細検索を押さずに検索を開始した場合、写真のように全ジャンル、徒歩のオプションで検索をします</p>
+        <h3>Step3. ルート検索ボタンを押す</h3>
+        <p>押して、しばらくのロード画面を経ると、マップに結果が表示されます。気に入らなければもう一度ルート検索を押すことで再提案されます。
+        <img src="./img/exp3.png" style="width:100%">
+        </p>
       </section>
     </header>
     <div class="container">
@@ -116,7 +131,8 @@
                   </form>
                 </details>
               </div>
-              <!-- <div class="form-block"> -->
+              <div class="form-block" style="background-color: transparent;">
+              <!-- <div> -->
                 <p>
                   <input
                     class="search"
@@ -127,7 +143,7 @@
                     style="border-width:1px;"
                   />
                 </p>
-              <!-- </div> -->
+              </div>
               <div class="form-block">
                 <p>
                   移動距離

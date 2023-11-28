@@ -30,6 +30,7 @@ $(window).on('load',function(){
 //1. テキストを含む一般的なモーダル
 $(".info").modaal({
 	overlay_close:true,//モーダル背景クリック時に閉じるか
+	width: window.parent.screen.width * 0.7,
 	before_open:function(){// モーダルが開く前に行う動作
 		$('html').css('overflow-y','hidden');/*縦スクロールバーを出さない*/
 	},
