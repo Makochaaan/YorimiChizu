@@ -13,8 +13,8 @@ var des_lat;
 var des_lon;
 var search_count = 0;
 const search_limit = 5;
-// const SERVER_URL = "https://yorimitizu.herokuapp.com";
-const SERVER_URL = "http://127.0.0.1:8000";
+const SERVER_URL = "https://yorimichizu.up.railway.app";
+// const SERVER_URL = "http://127.0.0.1:8000";
 
 //ルートの計算
 async function reRender() {
