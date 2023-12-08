@@ -173,7 +173,7 @@ async function reRender() {
         search_count = 0;
         alert("ルート検索できませんでした");
       }
-      document.getElementById("load_scene").style.display = "none";
+      
       
     }
   );
@@ -186,6 +186,7 @@ async function reRender() {
 
   document.getElementById("distance").value =
     d >= 1000 ? d / 1000 + "km" : d + "m";
+  document.getElementById("load_scene").style.display = "none";
 }
 
 //目的地のマーカーをつける
