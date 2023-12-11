@@ -111,11 +111,8 @@ async function reRender() {
           `<h3 id="firstHeading" class="firstHeading">${rel_place}</h3>` +
           '<div id="bodyContent">' +
           `<p><b>ジャンル: ${rel_type}</b></p>` +
-          `<p><b><a href=${url} target="_blank" rel="noopener noreferrer">Googleマップで詳細を見る</a></b>`
-          "Heritage Site.</p>" +
-          '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-          "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
-          "(last visited June 22, 2009).</p>" +
+          `<p><b><a href=${url} target="_blank" rel="noopener noreferrer">Googleマップで詳細を見る</a></b>` +
+          "</p>" +
           "</div>" +
           "</div>";
           var info = new google.maps.InfoWindow({
